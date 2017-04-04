@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import com.fci.yehiahd.jokelibrary.JokeActivity;
 
-import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 
@@ -49,22 +49,17 @@ public class MainActivity extends AppCompatActivity {
         RxEndPoint.getJoke()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<String>() {
+                .subscribe(new Action1<String>() {
                     @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onNext(String s) {
+                    public void call(String s) {
                         Intent intent = new Intent(MainActivity.this, JokeActivity.class);
                         intent.putExtra(getString(R.string.joke_extra),s);
                         startActivity(intent);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
