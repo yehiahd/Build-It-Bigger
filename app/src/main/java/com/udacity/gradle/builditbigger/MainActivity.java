@@ -1,14 +1,15 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-import com.example.MyJoke;
-import com.fci.yehiahd.jokelibrary.JokeActivity;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,12 +43,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        MyJoke joke = new MyJoke();
-        Intent intent = new Intent(MainActivity.this, JokeActivity.class);
-        intent.putExtra(getString(R.string.joke_extra),joke.getJoke());
-        startActivity(intent);
-//        Toast.makeText(this, joke.getJoke(), Toast.LENGTH_SHORT).show();
+//        MyJoke joke = new MyJoke();
+//        Intent intent = new Intent(MainActivity.this, JokeActivity.class);
+//        intent.putExtra(getString(R.string.joke_extra),joke.getJoke());
+//        startActivity(intent);
+
+        RxEndPoint.getJoke()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
-
-
 }

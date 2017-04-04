@@ -1,7 +1,7 @@
 package com.example;
 
 public class MyJoke {
-    public String getJoke() {
+    public static String getJoke() {
         return "Foo Bar is a programmer favourite hangout place :D ";
     }
 }
