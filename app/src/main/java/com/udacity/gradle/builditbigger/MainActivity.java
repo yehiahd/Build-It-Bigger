@@ -1,11 +1,14 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.fci.yehiahd.jokelibrary.JokeActivity;
 
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -43,11 +46,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-//        MyJoke joke = new MyJoke();
-//        Intent intent = new Intent(MainActivity.this, JokeActivity.class);
-//        intent.putExtra(getString(R.string.joke_extra),joke.getJoke());
-//        startActivity(intent);
-
         RxEndPoint.getJoke()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -64,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(String s) {
-                        Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, JokeActivity.class);
+                        intent.putExtra(getString(R.string.joke_extra),s);
+                        startActivity(intent);
                     }
                 });
     }
