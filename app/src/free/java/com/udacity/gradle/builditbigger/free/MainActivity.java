@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.free;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.fci.yehiahd.jokelibrary.JokeActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.udacity.gradle.builditbigger.R;
+import com.udacity.gradle.builditbigger.RxEndPoint;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+//        Toast.makeText(this, "Hello From Free Version", Toast.LENGTH_SHORT).show();
     }
 
     @Override
