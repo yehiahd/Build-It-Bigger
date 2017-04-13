@@ -6,18 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.fci.yehiahd.jokelibrary.JokeActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.udacity.gradle.builditbigger.BuildConfig;
+import com.udacity.gradle.builditbigger.EndpointsAsyncTask;
+import com.udacity.gradle.builditbigger.JokeListener;
 import com.udacity.gradle.builditbigger.R;
-import com.udacity.gradle.builditbigger.RxEndPoint;
-
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,21 +61,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        RxEndPoint.getJoke()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        Intent intent = new Intent(MainActivity.this, JokeActivity.class);
-                        intent.putExtra(getString(R.string.joke_extra),s);
-                        startActivity(intent);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+        EndpointsAsyncTask asyncTask = new EndpointsAsyncTask(this);
+        asyncTask.execute(new JokeListener() {
+            @Override
+            public void onJokeTold(String joke) {
+                Intent intent = new Intent(MainActivity.this, JokeActivity.class);
+                intent.putExtra(getString(R.string.joke_extra),joke);
+                startActivity(intent);
+            }
+        });
+
+//        EndpointsAsyncTask.getJoke()
+//                .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<String>() {
+//                    @Override
+//                    public void call(String s) {
+//                        Intent intent = new Intent(MainActivity.this, JokeActivity.class);
+//                        intent.putExtra(getString(R.string.joke_extra),s);
+//                        startActivity(intent);
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {
+//                        Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
     }
 }

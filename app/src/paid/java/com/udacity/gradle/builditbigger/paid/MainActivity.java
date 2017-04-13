@@ -10,7 +10,8 @@ import android.widget.Toast;
 
 import com.fci.yehiahd.jokelibrary.JokeActivity;
 import com.udacity.gradle.builditbigger.R;
-import com.udacity.gradle.builditbigger.RxEndPoint;
+import com.udacity.gradle.builditbigger.EndpointsAsyncTask;
+import com.udacity.gradle.builditbigger.JokeListener;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -47,21 +48,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        RxEndPoint.getJoke()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        Intent intent = new Intent(MainActivity.this, JokeActivity.class);
-                        intent.putExtra(getString(R.string.joke_extra),s);
-                        startActivity(intent);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+
+        EndpointsAsyncTask asyncTask = new EndpointsAsyncTask(this);
+        asyncTask.execute(new JokeListener() {
+            @Override
+            public void onJokeTold(String joke) {
+                Intent intent = new Intent(MainActivity.this, JokeActivity.class);
+                intent.putExtra(getString(R.string.joke_extra),joke);
+                startActivity(intent);
+            }
+        });
+
+
+//        RxEndPoint.getJoke()
+//                .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<String>() {
+//                    @Override
+//                    public void call(String s) {
+//                        Intent intent = new Intent(MainActivity.this, JokeActivity.class);
+//                        intent.putExtra(getString(R.string.joke_extra),s);
+//                        startActivity(intent);
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {
+//                        Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
     }
 }

@@ -34,11 +34,11 @@
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/apt/free/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/free/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/free/debug" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/paid/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/freeDebug/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/freeDebug/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/freeDebug/assets" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/freeDebug/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/paid/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/freeDebug/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/freeDebug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/freeDebug/shaders" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/free/debug" isTestSource="true" generated="true" />
@@ -62,13 +62,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/free/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/free/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/free/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testFree/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testFree/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testFree/assets" type="java-test-resource" />
@@ -76,9 +69,18 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testFree/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testFree/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testFree/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestFree/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/assets" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/shaders" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDebug/res" type="java-test-resource" />
@@ -193,17 +195,5 @@
     <orderEntry type="library" exported="" name="animated-vector-drawable-25.3.1" level="project" />
     <orderEntry type="module" module-name="jokelibrary" exported="" />
     <orderEntry type="module" module-name="javaJokes" exported="" />
-    <orderEntry type="library" exported="" name="constraint-layout-1.0.0-beta5" level="project" />
-    <orderEntry type="library" exported="" name="constraint-layout-solver-1.0.0-beta5" level="project" />
-    <orderEntry type="library" exported="" name="support-core-ui-25.3.0" level="project" />
-    <orderEntry type="library" exported="" name="support-core-utils-25.3.0" level="project" />
-    <orderEntry type="library" exported="" name="support-fragment-25.3.0" level="project" />
-    <orderEntry type="library" exported="" name="support-compat-25.3.0" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-25.3.0" level="project" />
-    <orderEntry type="library" exported="" name="support-media-compat-25.3.0" level="project" />
-    <orderEntry type="library" exported="" name="appcompat-v7-25.3.0" level="project" />
-    <orderEntry type="library" exported="" name="animated-vector-drawable-25.3.0" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-25.3.0" level="project" />
-    <orderEntry type="library" exported="" name="support-vector-drawable-25.3.0" level="project" />
   </component>
 </module>
