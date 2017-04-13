@@ -6,16 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.fci.yehiahd.jokelibrary.JokeActivity;
-import com.udacity.gradle.builditbigger.R;
 import com.udacity.gradle.builditbigger.EndpointsAsyncTask;
 import com.udacity.gradle.builditbigger.JokeListener;
-
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
+import com.udacity.gradle.builditbigger.R;
 
 public class MainActivity extends AppCompatActivity {
 
